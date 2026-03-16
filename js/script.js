@@ -25,57 +25,58 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
 const today = new Date().toISOString().split("T")[0];
 document.getElementById("bookingDate").setAttribute("min", today);
 
-// ===== COUNTDOWN TIMER (FOMO EFFECT) =====
+// ===== COUNTDOWN TIMER (3 HOURS LOOPING) =====
 function startCountdown() {
-  // Set waktu hitung mundur (24 jam = 86400 detik)
-  let timeRemaining = 86400;
+  // Set durasi 3 jam dalam detik (3 jam = 10800 detik)
+  const countdownDuration = 10800;
+  // GANTI NAMA KEY AGAR MEMORI 24 JAM YANG LAMA DIABAIKAN
+  const storageKey = "promoEndTime_3H";
 
-  // Cek apakah user sudah pernah buka web ini (pakai memori browser)
-  if (localStorage.getItem("promoEndTime")) {
-    const endTime = parseInt(localStorage.getItem("promoEndTime"));
-    const now = new Date().getTime();
+  // Fungsi untuk mereset timer ke 3 jam dari sekarang
+  function resetTimer() {
+    const newEndTime = new Date().getTime() + countdownDuration * 1000;
+    localStorage.setItem(storageKey, newEndTime);
+    return newEndTime;
+  }
 
-    if (endTime > now) {
-      // Lanjutkan sisa waktu
-      timeRemaining = Math.floor((endTime - now) / 1000);
-    } else {
-      // Jika waktu sudah habis, reset lagi ke 24 jam (opsional, agar promo jalan terus)
-      localStorage.setItem(
-        "promoEndTime",
-        new Date().getTime() + timeRemaining * 1000,
-      );
-    }
+  // Ambil waktu target dari memori browser
+  let endTime = localStorage.getItem(storageKey);
+  const now = new Date().getTime();
+
+  // Jika belum ada waktu di memori ATAU waktunya sudah terlewat, reset ke 3 jam
+  if (!endTime || parseInt(endTime) <= now) {
+    endTime = resetTimer();
   } else {
-    // Kunjungan pertama kali, catat waktu berakhirnya
-    localStorage.setItem(
-      "promoEndTime",
-      new Date().getTime() + timeRemaining * 1000,
-    );
+    endTime = parseInt(endTime);
   }
 
   const timerElement = document.getElementById("countdownTimer");
   if (!timerElement) return;
 
+  // Jalankan interval setiap 1 detik
   const countdown = setInterval(() => {
+    const currentTime = new Date().getTime();
+    let timeRemaining = Math.floor((endTime - currentTime) / 1000);
+
+    // Jika waktu habis (0), langsung loop (ulang ke 3 jam lagi)
     if (timeRemaining <= 0) {
-      clearInterval(countdown);
-      timerElement.innerHTML = "WAKTU HABIS!";
-      return;
+      endTime = resetTimer();
+      timeRemaining = countdownDuration;
     }
 
+    // Kalkulasi jam, menit, detik
     let hours = Math.floor(timeRemaining / 3600);
     let minutes = Math.floor((timeRemaining % 3600) / 60);
     let seconds = timeRemaining % 60;
 
-    // Tambahkan angka 0 di depan jika angkanya di bawah 10
+    // Tambahkan angka 0 di depan jika di bawah 10
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    // Tampilkan ke layar
+    // Tampilkan ke layar web
     timerElement.innerHTML = `${hours}j ${minutes}m ${seconds}d`;
-    timeRemaining--;
-  }, 1000); // Update setiap 1000 milidetik (1 detik)
+  }, 1000);
 }
 
 // ===== INITIALIZE =====
