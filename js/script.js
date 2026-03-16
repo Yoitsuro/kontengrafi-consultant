@@ -27,23 +27,18 @@ document.getElementById("bookingDate").setAttribute("min", today);
 
 // ===== COUNTDOWN TIMER (3 HOURS LOOPING) =====
 function startCountdown() {
-  // Set durasi 3 jam dalam detik (3 jam = 10800 detik)
-  const countdownDuration = 10800;
-  // GANTI NAMA KEY AGAR MEMORI 24 JAM YANG LAMA DIABAIKAN
+  const countdownDuration = 10800; // 3 jam
   const storageKey = "promoEndTime_3H";
 
-  // Fungsi untuk mereset timer ke 3 jam dari sekarang
   function resetTimer() {
     const newEndTime = new Date().getTime() + countdownDuration * 1000;
     localStorage.setItem(storageKey, newEndTime);
     return newEndTime;
   }
 
-  // Ambil waktu target dari memori browser
   let endTime = localStorage.getItem(storageKey);
   const now = new Date().getTime();
 
-  // Jika belum ada waktu di memori ATAU waktunya sudah terlewat, reset ke 3 jam
   if (!endTime || parseInt(endTime) <= now) {
     endTime = resetTimer();
   } else {
@@ -53,30 +48,32 @@ function startCountdown() {
   const timerElement = document.getElementById("countdownTimer");
   if (!timerElement) return;
 
-  // Jalankan interval setiap 1 detik
-  const countdown = setInterval(() => {
+  // KUNCI PERBAIKAN: Kita pisahkan rumus perhitungannya ke dalam fungsi khusus
+  function updateTimerDisplay() {
     const currentTime = new Date().getTime();
     let timeRemaining = Math.floor((endTime - currentTime) / 1000);
 
-    // Jika waktu habis (0), langsung loop (ulang ke 3 jam lagi)
     if (timeRemaining <= 0) {
       endTime = resetTimer();
       timeRemaining = countdownDuration;
     }
 
-    // Kalkulasi jam, menit, detik
     let hours = Math.floor(timeRemaining / 3600);
     let minutes = Math.floor((timeRemaining % 3600) / 60);
     let seconds = timeRemaining % 60;
 
-    // Tambahkan angka 0 di depan jika di bawah 10
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    // Tampilkan ke layar web
     timerElement.innerHTML = `${hours}j ${minutes}m ${seconds}d`;
-  }, 1000);
+  }
+
+  // 1. Eksekusi fungsi ini SECARA LANGSUNG saat halaman dimuat (agar tidak ada delay 1 detik)
+  updateTimerDisplay();
+
+  // 2. Baru setelah itu, biarkan dia mengulang setiap 1 detik
+  setInterval(updateTimerDisplay, 1000);
 }
 
 // ===== INITIALIZE =====
