@@ -335,6 +335,61 @@ nav.scrolled {
   gap: 8px;
 }
 
+/* ===== PRICING TABLE ===== */
+.pricing-table-container {
+  border-radius: 20px;
+  overflow: hidden; /* Menjaga agar sudut tabel tetap membulat */
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 20px;
+}
+
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.pricing-table th,
+.pricing-table td {
+  padding: 25px 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Garis pemisah tipis */
+}
+
+.pricing-table th {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.pricing-table tr:last-child td {
+  border-bottom: none; /* Menghilangkan garis bawah di baris terakhir */
+}
+
+.pricing-table td {
+  color: #94a3b8;
+  font-size: 1.05rem;
+  vertical-align: middle;
+}
+
+.pricing-table td strong {
+  color: #ffffff;
+  font-size: 1.15rem;
+}
+
+/* Responsivitas Tabel di HP */
+@media (max-width: 768px) {
+  .pricing-table th,
+  .pricing-table td {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+  .pricing-table td strong {
+    font-size: 1rem;
+  }
+}
+
 /* ===== BOOKING SECTION ===== */
 .booking {
   padding: 80px 20px;
