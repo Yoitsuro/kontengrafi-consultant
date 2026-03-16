@@ -411,20 +411,20 @@ nav.scrolled {
 /* ===== RESPONSIVITAS TABEL DI HP ===== */
 @media (max-width: 768px) {
   .pricing-table-container {
-    /* Mengizinkan tabel digeser ke samping jika layarnya benar-benar sempit */
-    overflow-x: auto;
-    /* Membuat efek geser (scroll) lebih mulus khusus di perangkat iOS/iPhone */
-    -webkit-overflow-scrolling: touch;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
   .pricing-table th,
   .pricing-table td {
-    padding: 12px 10px; /* Mengurangi ruang kosong/padding agar lebih muat */
-    font-size: 0.85rem; /* Mengecilkan teks sedikit */
+    padding: 10px 5px !important; /* Sangat sempit agar muat */
+    font-size: 0.8rem !important;
+    white-space: normal !important; /* Memaksa teks turun ke bawah jika tidak muat ke samping */
   }
 
   .pricing-table td strong {
-    font-size: 0.95rem; /* Mengecilkan teks harga agar tidak memakan tempat */
+    font-size: 0.85rem !important;
+    display: block; /* Memaksa harga turun ke baris baru jika perlu */
   }
 }
 
