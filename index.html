@@ -36,9 +36,6 @@
           AI amplify your brand's voice.
         </p>
         <div class="hero-buttons">
-          <button class="btn btn-primary glow" onclick="openPromptModal()">
-            💡 Get Consultation Prompt
-          </button>
           <a href="#booking" class="btn btn-secondary"> 📅 Book Now </a>
         </div>
 
@@ -66,6 +63,14 @@
         <div class="section-header">
           <h2>Paket <span class="gradient-text">Konsultasi</span></h2>
           <p>Pilih paket yang sesuai dengan kebutuhan brand Anda</p>
+          <div style="display: inline-block; margin-top: 15px; padding: 12px 25px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 15px; text-align: center;">
+            <div style="color: #ef4444; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 5px;">
+              🔥 Diskon Slot 3 Klien Pertama: Starter Cuma Rp 250rb
+            </div>
+            <div style="color: #ffffff; font-size: 1.2rem; font-weight: 800; letter-spacing: 1px;">
+              Berakhir dalam: <span id="countdownTimer" class="pulse-text">23:59:59</span>
+            </div>
+          </div>
         </div>
 
         <div class="pricing-table-container glass glow">
@@ -81,7 +86,10 @@
               <tr>
                 <td><strong>Starter</strong></td>
                 <td>1x sesi 60 menit + modul PDF</td>
-                <td><strong>Rp 350.000</strong></td>
+                <td>
+                  <del style="color: #64748b; font-size: 0.9rem; margin-right: 8px;">Rp 350.000</del>
+                  <strong style="color: #ef4444;">Rp 250.000</strong>
+                </td>
               </tr>
               <tr>
                 <td><strong>Growth</strong></td>
@@ -91,7 +99,7 @@
               <tr>
                 <td><strong>VIP</strong></td>
                 <td>5x sesi + pendampingan 1 bulan</td>
-                <td><strong>Rp 1.500.000 – Rp 2.000.000</strong></td>
+                <td><strong>Rp 1.500.000</strong></td>
               </tr>
             </tbody>
           </table>
@@ -141,17 +149,12 @@
               <input type="date" id="bookingDate" required />
             </div>
             <div class="form-group">
-              <label>⏰ Select Time</label>
-              <select id="bookingTime" required>
-                <option value="">Choose a time slot</option>
-                <option value="09:00">09:00 WIB</option>
-                <option value="10:00">10:00 WIB</option>
-                <option value="11:00">11:00 WIB</option>
-                <option value="13:00">13:00 WIB</option>
-                <option value="14:00">14:00 WIB</option>
-                <option value="15:00">15:00 WIB</option>
-                <option value="16:00">16:00 WIB</option>
-                <option value="17:00">17:00 WIB</option>
+              <label>📦 Pilih Paket</label>
+              <select id="bookingPackage" required>
+                <option value="">Pilih paket konsultasi</option>
+                <option value="Starter (Promo Rp 250rb)">Starter (Promo Rp 250.000)</option>
+                <option value="Growth (Rp 900rb)">Growth (Rp 900.000)</option>
+                <option value="VIP (Rp 1.5jt - 2jt)">VIP (Rp 1.500.000)</option>
               </select>
             </div>
           </div>
@@ -162,7 +165,7 @@
               <option value="Strategi Konten AI">Strategi Konten AI</option>
               <option value="Produksi Foto Studio AI">Produksi Foto Studio AI</option>
               <option value="Produksi Video AI">Produksi Video AI</option>
-              <option value="Identitas Merek AI">Identitas Merek AI</option>
+              <option value="Strategi Branding">Strategi Branding</option>
               <option value="Perencanaan Konten">Perencanaan & Kalender Konten</option>
               <option value="Lainnya">Lainnya</option>
             </select>

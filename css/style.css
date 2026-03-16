@@ -348,6 +348,23 @@ nav.scrolled {
   gap: 8px;
 }
 
+/* ===== TIMER ANIMATION ===== */
+.pulse-text {
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+  0% {
+    color: #ffffff;
+  }
+  50% {
+    color: #ef4444;
+  } /* Berubah jadi merah sebentar */
+  100% {
+    color: #ffffff;
+  }
+}
+
 /* ===== PRICING TABLE ===== */
 .pricing-table-container {
   border-radius: 20px;
@@ -721,7 +738,7 @@ nav.scrolled {
   width: 100%;
   height: 100%;
   object-fit: contain; /* Gambar akan presisi di tengah tanpa gepeng */
-  opacity: 0.7;
+  opacity: 0.85;
   transition: all 0.3s ease;
   border-radius: 8px; /* Sedikit melengkungkan sudut foto JPEG */
 }
