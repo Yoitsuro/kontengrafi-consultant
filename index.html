@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontengrafi - AI Consultation Agency</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="container nav-content">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#promo">Promo</a></li>
+          <li><a href="#booking">Booking</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#brands">Brands</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </nav>
+
+    <section class="hero" id="home">
+      <div class="hero-bg hero-bg-1 floating"></div>
+      <div class="hero-bg hero-bg-2 floating"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge glass">⚡ AI-Powered Content Solutions</div>
+        <h1>
+          Transform Your Brand with<br />
+          <span class="gradient-text">AI Content Creation</span>
+        </h1>
+        <p>
+          We leverage cutting-edge artificial intelligence to create stunning,
+          engaging content that drives results. From strategy to execution, let
+          AI amplify your brand's voice.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary glow" onclick="openPromptModal()">
+            💡 Get Consultation Prompt
+          </button>
+          <a href="#booking" class="btn btn-secondary"> 📅 Book Now </a>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card glass">
+            <div class="stat-number gradient-text">500+</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-number gradient-text">98%</div>
+            <div class="stat-label">Client Satisfaction</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-number gradient-text">50+</div>
+            <div class="stat-label">Brand Partners</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-number gradient-text">24/7</div>
+            <div class="stat-label">AI Support</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="promo" id="promo">
+      <div class="container">
+        <div class="promo-card glass glow">
+          <div class="promo-badge gradient-bg">🔥 LIMITED TIME OFFER</div>
+          <h2>Get <span class="gradient-text">50% OFF</span></h2>
+          <p>Your First AI Strategy Consultation Session</p>
+          <div class="promo-features">
+            <div class="promo-feature glass">
+              <span>⏰</span>
+              <span>Offer Ends Soon</span>
+            </div>
+            <div class="promo-feature glass">
+              <span>👥</span>
+              <span>First 100 Clients Only</span>
+            </div>
+          </div>
+          <a href="#booking" class="btn btn-primary">
+            ⚡ Claim Your Discount
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="booking">
+      <div class="container">
+        <div class="section-header">
+          <h2>Book Your <span class="gradient-text">Consultation</span></h2>
+          <p>
+            Select your preferred date and time. We'll connect via WhatsApp.
+          </p>
+        </div>
+
+        <form class="booking-form glass glow" onsubmit="handleBooking(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>👤 Your Name</label>
+              <input
+                type="text"
+                id="clientName"
+                required
+                placeholder="Enter your full name"
+              />
+            </div>
+            <div class="form-group">
+              <label>🏢 Company/Brand</label>
+              <input
+                type="text"
+                id="companyName"
+                placeholder="Your company name"
+              />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>📅 Select Date</label>
+              <input type="date" id="bookingDate" required />
+            </div>
+            <div class="form-group">
+              <label>⏰ Select Time</label>
+              <select id="bookingTime" required>
+                <option value="">Choose a time slot</option>
+                <option value="09:00">09:00 WIB</option>
+                <option value="10:00">10:00 WIB</option>
+                <option value="11:00">11:00 WIB</option>
+                <option value="13:00">13:00 WIB</option>
+                <option value="14:00">14:00 WIB</option>
+                <option value="15:00">15:00 WIB</option>
+                <option value="16:00">16:00 WIB</option>
+                <option value="17:00">17:00 WIB</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>💼 Consultation Topic</label>
+            <select id="consultationTopic">
+              <option value="AI Strategy">AI Content Strategy</option>
+              <option value="Social Media">Social Media Automation</option>
+              <option value="Video Production">AI Video Production</option>
+              <option value="Brand Identity">AI Brand Identity</option>
+              <option value="Content Planning">
+                Content Planning & Calendar
+              </option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width: 100%; justify-content: center"
+          >
+            ✅ Confirm Booking via WhatsApp
+          </button>
+
+          <p class="form-note">
+            ℹ️ You'll be redirected to WhatsApp to complete your booking
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <div class="portfolio-header-top">07 PORTOFOLIO</div>
+        <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 30px">
+          Hasil Kerja Kami ✨
+        </h2>
+
+        <div class="portfolio-tabs">
+          <button
+            class="tab-btn active"
+            onclick="switchPortfolioTab(event, 'foto')"
+          >
+            📷 FOTO
+          </button>
+          <button class="tab-btn" onclick="switchPortfolioTab(event, 'video')">
+            🎬 VIDEO
+          </button>
+        </div>
+
+        <div class="portfolio-content active" id="tab-foto">
+          <div class="masonry-wrapper">
+            <div class="masonry-grid">
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download.png" alt="Portfolio Foto 1" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download.jpg" alt="Portfolio Foto 2" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (1).png" alt="Portfolio Foto 3" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (2).png" alt="Portfolio Foto 4" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (3).png" alt="Portfolio Foto 5" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (4).png" alt="Portfolio Foto 6" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (5).png" alt="Portfolio Foto 7" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (6).png" alt="Portfolio Foto 8" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (7).png" alt="Portfolio Foto 9" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (8).png" alt="Portfolio Foto 10" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (9).png" alt="Portfolio Foto 11" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (10).png" alt="Portfolio Foto 12" />
+              </div>
+              <div class="masonry-item">
+                <span class="media-badge">FOTO</span>
+                <img src="images/download (11).png" alt="Portfolio Foto 13" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-content" id="tab-video">
+          <div class="video-grid">
+            <div
+              class="video-item"
+              onmouseenter="playHoverVideo(this)"
+              onmouseleave="pauseHoverVideo(this)"
+            >
+              <span class="media-badge">VIDEO</span>
+              <video
+                src="videos/download (1).mp4#t=0.1"
+                preload="metadata"
+                loop
+                muted
+                playsinline
+              ></video>
+              <div class="play-button">▶</div>
+            </div>
+            <div
+              class="video-item"
+              onmouseenter="playHoverVideo(this)"
+              onmouseleave="pauseHoverVideo(this)"
+            >
+              <span class="media-badge">VIDEO</span>
+              <video
+                src="videos/download (2).mp4#t=0.1"
+                preload="metadata"
+                loop
+                muted
+                playsinline
+              ></video>
+              <div class="play-button">▶</div>
+            </div>
+            <div
+              class="video-item"
+              onmouseenter="playHoverVideo(this)"
+              onmouseleave="pauseHoverVideo(this)"
+            >
+              <span class="media-badge">VIDEO</span>
+              <video
+                src="videos/download (3).mp4#t=0.1"
+                preload="metadata"
+                loop
+                muted
+                playsinline
+              ></video>
+              <div class="play-button">▶</div>
+            </div>
+            <div
+              class="video-item"
+              onmouseenter="playHoverVideo(this)"
+              onmouseleave="pauseHoverVideo(this)"
+            >
+              <span class="media-badge">VIDEO</span>
+              <video
+                src="videos/download (4).mp4#t=0.1"
+                preload="metadata"
+                loop
+                muted
+                playsinline
+              ></video>
+              <div class="play-button">▶</div>
+            </div>
+            <div
+              class="video-item"
+              onmouseenter="playHoverVideo(this)"
+              onmouseleave="pauseHoverVideo(this)"
+            >
+              <span class="media-badge">VIDEO</span>
+              <video
+                src="videos/download (5).mp4#t=0.1"
+                preload="metadata"
+                loop
+                muted
+                playsinline
+              ></video>
+              <div class="play-button">▶</div>
+            </div>
+            <div
+              class="video-item"
+              onmouseenter="playHoverVideo(this)"
+              onmouseleave="pauseHoverVideo(this)"
+            >
+              <span class="media-badge">VIDEO</span>
+              <video
+                src="videos/download (6).mp4#t=0.1"
+                preload="metadata"
+                loop
+                muted
+                playsinline
+              ></video>
+              <div class="play-button">▶</div>
+            </div>
+            <div
+              class="video-item"
+              onmouseenter="playHoverVideo(this)"
+              onmouseleave="pauseHoverVideo(this)"
+            >
+              <span class="media-badge">VIDEO</span>
+              <video
+                src="videos/download (7).mp4#t=0.1"
+                preload="metadata"
+                loop
+                muted
+                playsinline
+              ></video>
+              <div class="play-button">▶</div>
+            </div>
+            <div
+              class="video-item"
+              onmouseenter="playHoverVideo(this)"
+              onmouseleave="pauseHoverVideo(this)"
+            >
+              <span class="media-badge">VIDEO</span>
+              <video
+                src="videos/download (8).mp4#t=0.1"
+                preload="metadata"
+                loop
+                muted
+                playsinline
+              ></video>
+              <div class="play-button">▶</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </div> <div style="display: flex; justify-content: center; margin-top: 50px;">
+          <a href="https://instagram.com/kontengrafi.works" target="_blank" class="btn-instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+            Lihat Portfolio Lengkap di Instagram &rarr;
+          </a>
+        </div>
+
+      </div> </section> ```
+
+
+    <section class="brands" id="brands">
+      <div class="container">
+        <div class="section-header">
+          <h2>Brands That <span class="gradient-text">Work With Us</span></h2>
+          <p>Trusted by innovative companies worldwide</p>
+        </div>
+
+        <div class="brands-grid">
+          <div class="brand-card glass">
+            <img src="images/brands/ecloria.jpeg" alt="Ecloria" class="brand-img" />
+          </div>
+          <div class="brand-card glass">
+            <img src="images/brands/gkbj.jpeg" alt="GKBJ" class="brand-img" />
+          </div>
+          <div class="brand-card glass">
+            <img src="images/brands/lavish.jpeg" alt="Lavish" class="brand-img" />
+          </div>
+          <div class="brand-card glass">
+            <img src="images/brands/fut.jpeg" alt="FUT" class="brand-img" />
+          </div>
+          <div class="brand-card glass">
+            <img src="images/brands/icare.jpeg" alt="ICare" class="brand-img" />
+          </div>
+          <div class="brand-card glass many-more">
+            <span>Many More &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<footer>
+      <div class="container footer-content">
+        
+        <div class="footer-section footer-brand">
+          <div class="footer-logo">
+            <span class="gradient-text">Kontengrafi</span>
+          </div>
+          <div class="copyright">
+            © 2025 — 2026 Kontengrafi.<br>All rights reserved.
+          </div>
+        </div>
+
+        <div class="footer-section footer-contact">
+          <a href="https://instagram.com/kontengrafi.works" target="_blank" class="footer-contact-link">
+            <span>📷</span> Instagram kontengrafi.works
+          </a>
+          <a href="https://wa.me/6281995555169" target="_blank" class="footer-contact-link">
+            <span>💬</span> WhatsApp 0819-9555-5169
+          </a>
+        </div>
+
+        <div class="footer-section footer-notice">
+          <p>Harga bisa berubah sewaktu-waktu.</p>
+          <p>DM kami buat konsultasi & custom package.</p>
+        </div>
+
+      </div>
+    </footer>
+
+    <div
+      class="modal-overlay"
+      id="promptModal"
+      onclick="closeModalOutside(event)"
+    >
+      <div class="modal-content glass glow">
+        <div class="modal-header">
+          <h3>
+            <span>💡</span>
+            AI Content Prompt Generator
+          </h3>
+          <button class="modal-close" onclick="closePromptModal()">✕</button>
+        </div>
+
+        <div class="prompt-box glass" id="promptContent"></div>
+
+        <div class="modal-buttons">
+          <button class="btn btn-primary" onclick="generateNewPrompt()">
+            🔄 Generate New Prompt
+          </button>
+          <button class="btn btn-secondary" onclick="copyPrompt()">
+            📋 Copy to Clipboard
+          </button>
+        </div>
+
+        <div class="modal-info glass">
+          <h4>
+            <span style="color: #6366f1">ℹ️</span>
+            Why Use AI Prompts?
+          </h4>
+          <ul>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Save hours of content planning time</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Get consistent, high-quality output</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Scale your content production effortlessly</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Stay ahead with AI-powered creativity</span>
+            </li>
+          </ul>
+        </div>
+
+        <div style="text-align: center">
+          <a
+            href="#booking"
+            onclick="closePromptModal()"
+            class="btn btn-primary"
+          >
+            📅 Book Your Consultation Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast glass glow" id="toast">
+      <span class="toast-icon">✅</span>
+      <span id="toastMessage">Success!</span>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
