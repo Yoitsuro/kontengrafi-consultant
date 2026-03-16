@@ -411,33 +411,84 @@ nav.scrolled {
 /* ===== RESPONSIVITAS TABEL DI HP ===== */
 @media (max-width: 768px) {
   .pricing-table-container {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
+    overflow: visible;
   }
 
-  .pricing-table th,
+  /* Sembunyikan header tabel di mobile */
+  .pricing-table thead {
+    display: none;
+  }
+
+  .pricing-table,
+  .pricing-table tbody,
+  .pricing-table tr,
   .pricing-table td {
-    padding: 10px 5px !important; /* Sangat sempit agar muat */
-    font-size: 0.8rem !important;
-    white-space: normal !important; /* Memaksa teks turun ke bawah jika tidak muat ke samping */
+    display: block;
+    width: 100%;
+  }
+
+  /* Setiap baris jadi card tersendiri */
+  .pricing-table tbody tr {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .pricing-table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  /* Setiap cell tampil inline dengan label pseudo-element */
+  .pricing-table td {
+    padding: 4px 0;
+    font-size: 0.95rem;
+    border-bottom: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Nama paket (kolom pertama) */
+  .pricing-table td:first-child {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  /* Isi paket (kolom kedua) */
+  .pricing-table td:nth-child(2)::before {
+    content: "📌 ";
+    flex-shrink: 0;
+  }
+
+  /* Harga (kolom ketiga) - tampil full width, tidak terpotong */
+  .pricing-table td:nth-child(3) {
+    margin-top: 8px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pricing-table td:nth-child(3) strong {
+    font-size: 1.1rem !important;
+    display: inline !important;
   }
 
   .pricing-table td strong {
-    font-size: 0.85rem !important;
-    display: block; /* Memaksa harga turun ke baris baru jika perlu */
+    font-size: 1rem;
+    display: inline;
   }
 }
 
 /* Khusus untuk layar HP yang lebih kecil lagi (seperti iPhone berlayar sempit) */
 @media (max-width: 480px) {
-  .pricing-table th,
-  .pricing-table td {
-    padding: 10px 6px; /* Padding dibuat sangat tipis di kiri-kanan */
-    font-size: 0.8rem;
+  .pricing-table tbody tr {
+    padding: 16px;
   }
 
-  .pricing-table td strong {
-    font-size: 0.9rem;
+  .pricing-table td:first-child {
+    font-size: 1rem;
+  }
+
+  .pricing-table td:nth-child(3) strong {
+    font-size: 1rem !important;
   }
 }
 
